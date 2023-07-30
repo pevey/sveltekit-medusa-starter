@@ -1,0 +1,41 @@
+{
+	"name": "tsstore",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"test": "npm run test:integration && npm run test:unit",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:integration": "playwright test",
+		"test:unit": "vitest"
+	},
+	"devDependencies": {
+		"@melt-ui/pp": "^0.0.7",
+		"@melt-ui/svelte": "^0.27.1",
+		"@playwright/test": "^1.28.1",
+		"@sveltejs/adapter-node": "^1.3.1",
+		"@sveltejs/kit": "^1.20.4",
+		"autoprefixer": "^10.4.14",
+		"dotenv": "^16.3.1",
+		"lucide-svelte": "^0.263.0",
+		"postcss": "^8.4.27",
+		"postcss-load-config": "^4.0.1",
+		"svelte": "^4.0.5",
+		"svelte-check": "^3.4.3",
+		"svelte-sequential-preprocessor": "^2.0.1",
+		"sveltekit-medusa-client": "^1.12.1-b",
+		"sveltekit-stripe": "^1.1.0",
+		"sveltekit-superforms": "^1.5.0",
+		"sveltekit-turnstile": "^1.2.0",
+		"tailwindcss": "^3.3.3",
+		"tslib": "^2.4.1",
+		"typescript": "^5.0.0",
+		"vite": "^4.4.2",
+		"vitest": "^0.32.2",
+		"zod": "^3.21.4"
+	},
+	"type": "module"
+}
