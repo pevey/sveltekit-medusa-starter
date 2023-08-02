@@ -48,7 +48,6 @@ export const actions: Actions = {
          last_name: form.data.lastName,
          email: form.data.email,
          password: form.data.password,
-         phone: ''
       }
       if (await medusa.register(locals, cookies, user)) {
          throw redirect(302, `/${form.data.rurl}`)

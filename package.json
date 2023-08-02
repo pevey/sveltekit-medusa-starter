@@ -49,7 +49,7 @@
 		"svelte-check": "^3.4.3",
 		"svelte-meta-tags": "^2.8.0",
 		"svelte-sequential-preprocessor": "^2.0.1",
-		"sveltekit-medusa-client": "^1.13.0",
+		"sveltekit-medusa-client": "^1.13.1",
 		"sveltekit-search-params": "^1.0.14",
 		"sveltekit-stripe": "^1.1.0",
 		"sveltekit-superforms": "^1.5.0",
