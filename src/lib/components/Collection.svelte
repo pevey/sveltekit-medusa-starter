@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
    import ProductCard from './ProductCard.svelte'
-   export let products
+   export let products: any
 </script>
 
 <div class="bg-white">

@@ -16,8 +16,8 @@ export const clickOutside = (node: HTMLElement) => {
 
 export const formatPrice = (price: number) => {
    return new Intl.NumberFormat('en-US', {
-     style: 'currency',
-     currency: 'USD',
+   style: 'currency',
+   currency: 'USD',
    }).format(price / 100)
 }
 

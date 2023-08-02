@@ -40,7 +40,7 @@
       description: description,
       images: images,
       site_name: PUBLIC_SITE_NAME
-   } : null
+   } : undefined
 
    const twitterData = twitter? {
       handle: PUBLIC_TWITTER_HANDLE,
@@ -50,7 +50,7 @@
       description: description,
       image: images[0].url,
       imageAlt: images[0].alt
-   } : null
+   } : undefined
 </script>
 
 <MetaTags

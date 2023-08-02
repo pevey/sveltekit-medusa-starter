@@ -12,7 +12,7 @@
       hsl(345deg 7% 55%) 78%,
       hsl(353deg 7% 55%) 89%,
       hsl(0deg 7% 54%) 100%
-    );">
+   );">
    <div class="max-w-7xl pt-12 sm:pt-28 mx-auto">
       <div class="container px-4 mx-auto">
          <div class="max-w-lg md:max-w-xl py-14 px-6 xs:px-12 lg:px-16 mx-auto bg-white rounded-3xl shadow-lg">

@@ -4,13 +4,16 @@
    import { fade, fly } from 'svelte/transition'
    import { enhance } from '$app/forms'
    import { invalidateAll } from '$app/navigation'
-	import { formatPrice } from '$lib/utils'
+   import { formatPrice } from '$lib/utils'
    export let cart: any
    export let count: number
    $: cart = cart
    $: items = cart?.items || []
-	$: total = cart?.subtotal
-   const { trigger, portal, overlay, content, title, description, close, open, } = createDialog( { preventScroll: true } )
+   $: total = cart?.subtotal
+   const { 
+      elements: { trigger, portalled, overlay, content, title, close },
+      states: { open, } 
+   } = createDialog( { preventScroll: true } )
 </script>
 {#if $open}
    <button {...$close} use:close class="flex relative mx-2 p-2 items-center justify-center hover:bg-stone-200 rounded-md">
@@ -33,7 +36,7 @@
       {/if}
    </button>
 {/if}
-<div use:portal>
+<div use:portalled>
    {#if $open}
       <div {...$overlay} use:overlay class="fixed inset-0 z-20 bg-black/50" transition:fade={{ duration: 150 }} />
       <div {...$content} use:content class="overflow-auto fixed right-0 top-0 z-50 w-full h-full pb-0 mb-0 sm:w-4/5 md:w-2/3 lg:w-2/3 xl:w-1/2 bg-white p-[25px] shadow-lg focus:outline-none" transition:fly={{ x: '100%', duration: 300, opacity: 1, }}>

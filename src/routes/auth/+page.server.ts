@@ -8,7 +8,7 @@ import medusa from '$lib/server/medusa'
 
 export const load: PageServerLoad = async ({ locals, url }) => {
    let rurl = url.searchParams.get('rurl') || ''
-	let code = url.searchParams.get('code') || ''
+   let code = url.searchParams.get('code') || ''
 
    if (locals.user) { throw redirect(302, `/${rurl}`) }
 
@@ -18,8 +18,8 @@ export const load: PageServerLoad = async ({ locals, url }) => {
    const resetForm = await superValidate(resetPostReq, { id: 'reset' })
 
    return {
-		rurl,
-		code,
+      rurl,
+      code,
       loginForm,
       registerForm,
       forgotForm,
@@ -72,7 +72,7 @@ export const actions: Actions = {
       const form = await superValidate(request, resetPostReq, { id: 'reset' })
       if (!form.valid) return message(form, 'Something went wrong', { status: 500}) // this shouldn't happen because of client-side validation
       if (!(await validateToken(form.data.token, SECRET_TURNSTILE_KEY))) return message(form, 'Security token timed out or invalid. Please try again.', { status: 400 })
-		// if (await medusa.resetPassword(form.data.email, form.data.password, form.data.code)) return message(form, 'Your password has been reset', { status: 200 })
+      // if (await medusa.resetPassword(form.data.email, form.data.password, form.data.code)) return message(form, 'Your password has been reset', { status: 200 })
       if (await medusa.resetPassword(form.data.email, form.data.password, form.data.code)) {
          if (await medusa.login(locals, cookies, form.data.email, form.data.password)) {
             throw redirect(302, `/${form.data.rurl}`)

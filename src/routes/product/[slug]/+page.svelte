@@ -14,7 +14,7 @@
    export let data: PageData
    let user = data.user as any
    let product = data.product as any
-	let images = product.images as any
+   let images = product.images as any
    let tab: string = 'faq'
 
    let urlVariantId

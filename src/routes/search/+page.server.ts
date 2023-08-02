@@ -17,8 +17,8 @@ export const actions: Actions = {
       if (!q) { return fail(400, { q, missing: true }) }
       const hits = await medusa.getSearchResults(q)
       return { 
-			success: true, 
-			hits 
-		}
+         success: true, 
+         hits 
+      }
    }
 }

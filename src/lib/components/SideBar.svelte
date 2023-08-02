@@ -2,7 +2,10 @@
    import { X, Menu } from 'lucide-svelte'
    import { createDialog } from '@melt-ui/svelte'
    import { fade, fly } from 'svelte/transition'
-   const { trigger, portal, overlay, content, close, open, } = createDialog({ preventScroll: false })
+   const { 
+      elements: { trigger, portalled, overlay, content, close },
+      states: { open, } 
+   } = createDialog( { preventScroll: false } )
 </script>
 {#if $open}
    <button {...$close} use:close class="flex p-2 ml-2 items-center justify-center hover:bg-stone-200 rounded-md">
@@ -13,7 +16,7 @@
       <Menu class="text-gray-800 h-10 w-10" />
    </button>
 {/if}
-<div use:portal>
+<div use:portalled>
    {#if $open}
       <div {...$overlay} use:overlay class="fixed inset-0 z-20 bg-black/50" transition:fade={{ duration: 150 }} />
       <div {...$content} use:content class="overflow-auto fixed left-0 top-0 z-50 h-screen w-full max-w-[350px] bg-white p-[25px] shadow-lg focus:outline-none" transition:fly={{ x: '-100%', duration: 300, opacity: 1, }}>

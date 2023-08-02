@@ -3,12 +3,12 @@ import { fail, redirect } from '@sveltejs/kit'
 import medusa from '$lib/server/medusa'
 
 export const load: PageServerLoad = async function ({ locals }) {
-	if (!locals.user) throw redirect(302, '/auth?rurl=checkout')
+   if (!locals.user) throw redirect(302, '/auth?rurl=checkout')
 
    return {
-		user: locals.user,
-		cart: locals.cart
-	}
+      user: locals.user,
+      cart: locals.cart
+   }
 }
 
 export const actions: Actions = {

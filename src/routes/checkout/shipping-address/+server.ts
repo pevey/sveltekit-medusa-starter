@@ -7,5 +7,5 @@ export const POST: RequestHandler = async ({ request, locals }) => {
    if (!locals.cartid || !address) { throw error(400, 'bad format') }
    const cart = await medusa.updateCartShippingAddress(locals, address)
    if (cart) return json(cart)
-	else throw error(500, 'server error')
+   else throw error(500, 'server error')
 }

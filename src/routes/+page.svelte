@@ -12,5 +12,5 @@
       <p>{product.description}</p>
    </div>
 {:else}
-    No products found.
+   No products found.
 {/each} -->
