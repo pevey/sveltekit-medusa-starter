@@ -123,7 +123,7 @@
                      <p class="ml-2 mt-1 text-sm text-gray-500">Shipping and taxes will be calculated at checkout.</p>
                </div>
                <form action="/checkout">
-                  <button type="submit" class="my-4 w-full items-center justify-center rounded-md border border-transparent bg-lime-600 px-5 py-3 text-base font-medium text-white hover:bg-lime-700">Checkout</button>
+                  <button use:close type="submit" class="my-4 w-full items-center justify-center rounded-md border border-transparent bg-lime-600 px-5 py-3 text-base font-medium text-white hover:bg-lime-700">Checkout</button>
                </form>
                {/if}
                <button {...$close} use:close class="w-full text-center font-medium text-gray-800 hover:text-gray-500">
