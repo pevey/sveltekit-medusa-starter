@@ -130,6 +130,30 @@
          <input type="hidden" name="rurl" value={$registerForm.rurl} />
          <input type="hidden" name="token" bind:value={$registerForm.token} />
          <label class="label">
+            <div class="label-text">First Name</div>
+            <input
+               name="firstName"
+               type="text"
+               autocomplete="given-name" 
+               class="input"
+               aria-invalid={$registerErrors.firstName ? 'true' : undefined}
+               bind:value={$registerForm.firstName}
+            />
+            {#if $registerErrors.firstName}<span class="invalid">{$registerErrors.firstName}</span>{/if}
+         </label>
+         <label class="label">
+            <div class="label-text">Last Name</div>
+            <input
+               name="lastName"
+               type="text"
+               autocomplete="family-name" 
+               class="input"
+               aria-invalid={$registerErrors.lastName ? 'true' : undefined}
+               bind:value={$registerForm.lastName}
+            />
+            {#if $registerErrors.lastName}<span class="invalid">{$registerErrors.lastName}</span>{/if}
+         </label>
+         <label class="label">
             <div class="label-text">Email</div>
             <input
                name="email"
