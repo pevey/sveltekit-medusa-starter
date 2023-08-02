@@ -25,14 +25,14 @@
    </a>
 {/if}
 {#if $open}
-<div {...$menu} use:menu class="menu">
-   <div {...$item} use:item class="item">
-      <a href="/account">Your Profile</a>
+   <div {...$menu} use:menu class="menu">
+      <div {...$item} use:item class="item">
+         <a href="/account">Your Profile</a>
+      </div>
+      <div {...$item} use:item class="item">
+         <a href="/auth/logout">Sign Out</a>
+      </div>
    </div>
-   <div {...$item} use:item class="item">
-      <a href="/auth/logout">Sign Out</a>
-   </div>
-</div>
 {/if}
 <style lang="postcss">
    .menu {
