@@ -15,3 +15,24 @@ git clone git@github.com:pevey/sveltekit-medusa-starter.git ./
 # create a new project in my-app
 git clone git@github.com:pevey/sveltekit-medusa-starter.git my-app
 ```
+
+## Installing packages
+
+```bash
+cd my-app
+yarn install
+```
+
+## Configuring a project
+
+```bash
+mv .env.example .env
+```
+- Open .env and add any required settings
+- Make sure to add http://localhost:5173 to your STORE_CORS in medusa-config.js in your medusa project folder.
+
+## Running the app
+
+```bash
+yarn dev
+```
