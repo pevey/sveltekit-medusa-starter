@@ -1,5 +1,6 @@
 <script lang="ts">
    import type { PageData } from './$types'
+   import { onMount } from 'svelte'
    import SEO from '$lib/components/SEO.svelte'
    import { PUBLIC_SITE_NAME } from '$env/static/public'
    import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public'
@@ -14,7 +15,7 @@
    let cart = data.cart
    $: items = cart?.items || []
    
-   let token: string
+   let token: string = (PUBLIC_TURNSTILE_SITE_KEY === '')? 'no-token-required' : ''
    let clientSecret: string
    let shippingOptions: any[]
    let shippingOptionId: string
@@ -113,11 +114,10 @@
 
    const saveShippingOption = async (id: string) => {
       if (!shippingOptionId) return false
-      let form = new FormData()
-      form.append('option_id', id)
-      return await fetch('/checkout/shipping-option', { method: 'POST', body: form })
-      .then(res => res.json())
-      .catch(() => false)
+      return await fetch('/checkout/shipping-option', { 
+         method: 'POST', 
+         body: JSON.stringify({ 'option_id': id }) 
+      }).then(res => res.json()).catch(() => false)
    }
 
    // const savePaymentMethod = async (id) => {
@@ -128,6 +128,37 @@
    // 	.catch(() => false)
    // }
 
+   const startCheckout = async (token: string) => {
+      try {
+         let response = await fetch('/checkout/turnstile', { 
+            method: 'POST', 
+            body: JSON.stringify({ token } )
+         }).then(res => res.json())
+         cart = response.cart
+         clientSecret = response.cart.payment_session.data.client_secret
+         shippingOptions = response.shippingOptions
+         for (let shippingOption of shippingOptions) {
+            if (shippingOption.name === 'Free Shipping') {
+               shippingOptionId = shippingOption.id
+               cart = await saveShippingOption(shippingOptionId)
+               break
+            }
+         }
+         if (!shippingOptionId) {
+            shippingOptionId = shippingOptions[0].id
+            cart = await saveShippingOption(shippingOptionId)
+         }
+         loading = false
+      } catch (err) {
+         console.log(err)
+      }
+   }
+
+   onMount( async () => {
+      if (token = 'no-token-required') {
+         await startCheckout(token)
+      }
+   })
 </script>
 
 <SEO title="Checkout" description="Checkout page for {PUBLIC_SITE_NAME}"/>
@@ -159,28 +190,7 @@
 {:else if !token}
    <Turnstile theme="light" siteKey={PUBLIC_TURNSTILE_SITE_KEY} on:turnstile-callback={ async (e) => { 
       token = e.detail.token
-      let form = new FormData()
-      form.append('token', token)
-      try {
-         let response = await fetch('/checkout/turnstile', { method: 'POST', body: form }).then(res => res.json())
-         cart = response.cart
-         clientSecret = response.cart.payment_session.data.client_secret
-         shippingOptions = response.shippingOptions
-         for (let shippingOption of shippingOptions) {
-            if (shippingOption.name === 'Free Shipping') {
-               shippingOptionId = shippingOption.id
-               cart = await saveShippingOption(shippingOptionId)
-               break
-            }
-         }
-         if (!shippingOptionId) {
-            shippingOptionId = shippingOptions[0].id
-            cart = await saveShippingOption(shippingOptionId)
-         }
-         loading = false
-      } catch (err) {
-         console.log(err)
-      }
+      await startCheckout(token)
    }} />
 {:else if !loading}
    <main class="lg:flex lg:min-h-full lg:flex-row-reverse lg:max-h-screen lg:overflow-hidden">

@@ -6,3 +6,6 @@ Disallow: /auth
 Disallow: /api
 Disallow: /checkout
 Disallow: /search
+
+User-agent: GPTBot
+Disallow: /

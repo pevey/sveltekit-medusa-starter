@@ -1,8 +1,8 @@
 export const clickOutside = (node: HTMLElement) => {
    const handleClick = (event: MouseEvent) => {
-      if (node && !node.contains(event.target) && !event.defaultPrevented) {
+      if (node && !node.contains(event.target as Node) && !event.defaultPrevented) {
          node.dispatchEvent(
-            new CustomEvent('clickOutside', node)
+            new CustomEvent('clickOutside')
          )
       }
    }
@@ -34,7 +34,7 @@ export function debounce<F extends Function>(func:F, wait:number):F {
       const context = this
 
       timeoutId = window.setTimeout(function() {
-         func.apply(context, args);
+         func.apply(context, args)
       }, wait)
    }
 }
@@ -48,7 +48,7 @@ export const findSelectedOptions = (variantId: string, product: any): any[] => {
    let variantIndex = product.variants.findIndex((v:any) => v.id === variantId)
    if (variantIndex === -1) return selectedOptions
    for (let option of product.variants[variantIndex].options) {
-      let index = product.options.findIndex(o => o.filteredValues.includes(option.value))
+      let index = product.options.findIndex((o: any) => o.filteredValues.includes(option.value))
       selectedOptions[product.options[index].id] = option.value
    }
    return selectedOptions

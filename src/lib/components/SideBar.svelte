@@ -33,7 +33,8 @@
                </div>
                <div class="flex flex-col">
                   <a href="/about" use:close class="py-2 px-3 mr-2 rounded-md font-medium text-lg hover:bg-stone-200">About Us</a>
-                  <!-- More Links Here -->
+                  <a href="/account" use:close class="py-2 px-3 mr-2 rounded-md font-medium text-lg hover:bg-stone-200">Your Profile</a>
+                  <a href="/auth/logout" use:close class="py-2 px-3 mr-2 rounded-md font-medium text-lg hover:bg-stone-200">Sign Out</a>
                </div>
             </div>
             <div class="flex flex-col">

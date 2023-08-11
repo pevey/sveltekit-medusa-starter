@@ -12,7 +12,7 @@
 
    type state = 'signin' | 'signup' | 'forgot' | 'reset'
    let state = data.code ? 'reset' : 'signin'
-   let token: string = ''
+   let token: string = (PUBLIC_TURNSTILE_SITE_KEY === '')? 'no-token-required' : ''
 
    const { 
       form: loginForm, 

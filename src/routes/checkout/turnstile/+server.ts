@@ -5,9 +5,11 @@ import { error, json } from '@sveltejs/kit'
 import medusa from '$lib/server/medusa'
 
 export const POST: RequestHandler = async ({ request, locals }) => {
-   const data = await request.formData()
-   let token = data.get('token') as string
-   if (!await validateToken(token, SECRET_TURNSTILE_KEY)) throw error(400, { message: 'Bot risk' })
+   const data = await request.json()
+   let token = data.token as string
+   if (token !== 'no-token-required') {
+      if (!await validateToken(token, SECRET_TURNSTILE_KEY)) throw error(400, { message: 'Bot risk' })
+   }
 
    let cart = await medusa.createPaymentSessions(locals)
    if (!cart.total) { throw error(400, { message: 'Could not create payment sessions' })}
