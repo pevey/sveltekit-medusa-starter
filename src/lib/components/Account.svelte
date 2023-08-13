@@ -1,15 +1,20 @@
 <script lang="ts">
    import { UserCircle2 } from 'lucide-svelte'
    import { createDropdownMenu } from '@melt-ui/svelte'
+   import { goto } from '$app/navigation'
    export let user: any | null = null
    const { 
-      elements: { trigger, menu, item },
-      states: { open }
+      elements: { trigger, menu, item }
    } = createDropdownMenu({ 
       positioning: { placement: 'bottom-end' },
       arrowSize: 0,
       preventScroll: false,
    })
+   const logout = async () => {
+      const formData = new FormData() // The POST request fails without a body
+      const res = await fetch('/auth?/logout', { method: 'POST', body: formData })
+      if (res.ok) goto('/auth')
+   } 
 </script>
 {#if user}
    <button type="button" {...$trigger} use:trigger aria-label="Open account menu" class="flex p-2 ml-2 items-center justify-center hover:bg-stone-200 rounded-md">
@@ -24,16 +29,14 @@
       </button>
    </a>
 {/if}
-{#if $open}
-   <div {...$menu} use:menu class="menu">
-      <div {...$item} use:item class="item">
-         <a href="/account">Your Profile</a>
-      </div>
-      <div {...$item} use:item class="item">
-         <a href="/auth/logout">Sign Out</a>
-      </div>
+<div {...$menu} use:menu class="menu">
+   <div {...$item} use:item class="item">
+      <a href="/account">Your Profile</a>
    </div>
-{/if}
+   <div {...$item} use:item class="item">
+      <button type="button" on:click={logout}>Sign Out</button>
+   </div>
+</div>
 <style lang="postcss">
    .menu {
       @apply z-10 flex flex-col shadow-lg;

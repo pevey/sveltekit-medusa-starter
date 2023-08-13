@@ -190,9 +190,9 @@
     "@jridgewell/sourcemap-codec" "1.4.14"
 
 "@medusajs/types@^1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@medusajs/types/-/types-1.10.0.tgz#bf3d34125fcd6ff8c925de79c235cae07c6a7790"
-  integrity sha512-hadkFQ8AdZgHPnV47qyQiJhxzJbCEZEUweWup4krK/e9k8nqpbzfjuuFRM5jOxWvuKfZ/B9nxdQtz4piiomq8A==
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@medusajs/types/-/types-1.10.1.tgz#49e2cdd706b45a3d7844c0819227bd0f746b90c9"
+  integrity sha512-08yC5tD/pyUoVQ3feC0a1wgShHZyugfciVM7RwkxxO0iuryBDxYl/7kFzLV6OT5sQZABfk+PTaoWr5gZtNGKBw==
 
 "@melt-ui/pp@^0.1.0":
   version "0.1.0"
@@ -1604,10 +1604,10 @@ svelte@^4.0.1, svelte@^4.0.5:
     magic-string "^0.30.0"
     periscopic "^3.1.0"
 
-sveltekit-medusa-client@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/sveltekit-medusa-client/-/sveltekit-medusa-client-2.0.0.tgz#7faf178dba81b52119dc44014ba226354bbf2d34"
-  integrity sha512-7kBpvFKCHBAn4wL7LVIgsVcdavPKv0dvIQv7ndcfT/8RZKNozdwmfUEFWv9gg0p9dFPtYLmvIhWK1px4C4Gjdg==
+sveltekit-medusa-client@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/sveltekit-medusa-client/-/sveltekit-medusa-client-2.0.2.tgz#a13f799ba1df34a78e3c4c1d850ca80cd50e3588"
+  integrity sha512-LoUKN5B9DKgMchWtLy0nku7yqiq1NzXg6STUDqlxUPH7Spgk9ucXw3U12gTt7rFsrWlwHTBQnCeFWTLjujWdaQ==
   dependencies:
     "@medusajs/types" "^1.10.0"
     sveltekit-superfetch "^2.0.2"

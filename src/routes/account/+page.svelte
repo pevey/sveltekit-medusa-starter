@@ -1,11 +1,12 @@
 <script lang="ts">
+   import type { PageData } from './$types'
    import { PUBLIC_SITE_NAME } from '$env/static/public'
    import Meta from '$lib/components/SEO.svelte'
    import { enhance } from '$app/forms'
    import { invalidateAll } from '$app/navigation'
    import Pagination from '$lib/components/Pagination.svelte'
 
-   export let data
+   export let data: PageData
 //console.log(data.user)
    $: ({ id, email, first_name, last_name, phone, billing_address_id, shipping_addresses, orders } = data.user)
    $: orders.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))

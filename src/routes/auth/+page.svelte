@@ -22,7 +22,7 @@
    } = superForm(data.loginForm, { 
       validators: loginPostReq,
       invalidateAll: true,
-      onResult: () => { token = '' },
+      onUpdate: () => { token = (token === 'no-token-required')? 'no-token-required' : '' },
       taintedMessage: null
    })
 
@@ -34,7 +34,7 @@
    } = superForm(data.registerForm, {
       validators: registerPostReq,
       invalidateAll: true,
-      onResult: () => { token = '' },
+      onUpdate: () => { token = (token === 'no-token-required')? 'no-token-required' : '' },
       taintedMessage: null
    })
 
@@ -46,7 +46,7 @@
    } = superForm(data.forgotForm, {
       validators: forgotPostReq,
       invalidateAll: true,
-      onResult: () => { token = '' },
+      onUpdate: () => { token = (token === 'no-token-required')? 'no-token-required' : '' },
       taintedMessage: null
    })
 
@@ -58,7 +58,7 @@
    } = superForm(data.resetForm, {
       validators: resetPostReq,
       invalidateAll: true,
-      onResult: () => { token = '' },
+      onUpdate: () => { token = (token === 'no-token-required')? 'no-token-required' : '' },
       taintedMessage: null
    })
       

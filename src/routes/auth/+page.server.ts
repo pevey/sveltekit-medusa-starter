@@ -1,5 +1,5 @@
 import type { PageServerLoad, Actions } from './$types'
-import { redirect } from '@sveltejs/kit'
+import { error, redirect } from '@sveltejs/kit'
 import { message, superValidate } from 'sveltekit-superforms/server'
 import { validateToken } from 'sveltekit-turnstile'
 import { SECRET_TURNSTILE_KEY } from '$env/static/private'
@@ -103,6 +103,13 @@ export const actions: Actions = {
       } else {
          return message(form, 'The link was expired or invalid.', { status: 400 })
       }
+   },
+
+   logout: async ({ locals, cookies }) => {
+      if (await medusa.logout(locals, cookies)) {
+         throw redirect(302, '/auth')
+      }
+      else throw error(500, 'server error')
    }
 }
 

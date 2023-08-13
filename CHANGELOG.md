@@ -1,3 +1,10 @@
+## 0.1.2
+
+### Patch Changes
+
+- Update to client v2.0.2
+- Fixes to make the auth work more smoothly without Turnstile being set up
+
 ## 0.1.1
 
 ### Patch Changes

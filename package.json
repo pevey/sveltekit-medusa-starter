@@ -1,6 +1,6 @@
 {
 	"name": "sveltekit-medusa-starter",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "SvelteKit storefront starter app for MedusaJS eCommerce platform",
 	"repository": {
 		"type": "git",
@@ -45,12 +45,12 @@
 		"lucide-svelte": "^0.263.0",
 		"postcss": "^8.4.27",
 		"postcss-load-config": "^4.0.1",
-      "shx": "^0.3.4",
+		"shx": "^0.3.4",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.4.3",
 		"svelte-meta-tags": "^2.8.0",
 		"svelte-sequential-preprocessor": "^2.0.1",
-		"sveltekit-medusa-client": "^2.0.0",
+		"sveltekit-medusa-client": "^2.0.2",
 		"sveltekit-search-params": "^1.0.14",
 		"sveltekit-stripe": "^1.1.0",
 		"sveltekit-superforms": "^1.5.0",

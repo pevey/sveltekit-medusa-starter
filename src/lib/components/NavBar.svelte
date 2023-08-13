@@ -29,7 +29,7 @@
             <Account {user} />
          </div>
          <div class="lg:hidden">
-            <SideBar />
+            <SideBar {user} />
          </div>
       </div>
    </div>

@@ -2,6 +2,7 @@
    import { X, Menu } from 'lucide-svelte'
    import { createDialog } from '@melt-ui/svelte'
    import { fade, fly } from 'svelte/transition'
+   export let user: {}
    const { 
       elements: { trigger, portalled, overlay, content, close },
       states: { open, } 
@@ -32,9 +33,15 @@
                   </button>
                </div>
                <div class="flex flex-col">
-                  <a href="/about" use:close class="py-2 px-3 mr-2 rounded-md font-medium text-lg hover:bg-stone-200">About Us</a>
-                  <a href="/account" use:close class="py-2 px-3 mr-2 rounded-md font-medium text-lg hover:bg-stone-200">Your Profile</a>
-                  <a href="/auth/logout" use:close class="py-2 px-3 mr-2 rounded-md font-medium text-lg hover:bg-stone-200">Sign Out</a>
+                  <a href="/about" use:close class="py-2 px-3 mr-2 mb-12 rounded-md font-medium text-lg hover:bg-stone-200">About Us</a>
+                  {#if user}
+                     <a href="/account" use:close class="py-2 px-3 mr-2 mt-12 rounded-md font-medium text-lg hover:bg-stone-200">Your Profile</a>
+                     <form action="/auth?/logout" method="POST">
+                        <button type="submit" class="py-2 px-3 mr-2 rounded-md font-medium text-lg hover:bg-stone-200">Sign Out</button>
+                     </form>
+                  {:else}
+                     <a href="/auth" use:close class="py-2 px-3 mr-2 mt-12 rounded-md font-medium text-lg hover:bg-stone-200">Sign In</a>
+                  {/if}
                </div>
             </div>
             <div class="flex flex-col">
