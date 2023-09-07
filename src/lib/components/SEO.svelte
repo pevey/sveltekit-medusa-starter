@@ -39,7 +39,7 @@
       title: title,
       description: description,
       images: images,
-      site_name: PUBLIC_SITE_NAME
+      siteName: PUBLIC_SITE_NAME
    } : undefined
 
    const twitterData = twitter? {
