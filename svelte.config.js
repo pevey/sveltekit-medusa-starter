@@ -17,9 +17,9 @@ const config = {
    }),
    kit: {
       adapter: adapter(),
-      // alias: {
-		// 	'$src/*': '/src/*'
-		// },
+      alias: {
+			'$src/*': '/src/*'
+		},
       // csp: {
 		// 	directives: {
 		// 		'script-src': ['self', process.env.ORIGIN, 'https://challenges.cloudflare.com/', 'https://js.stripe.com/'],
