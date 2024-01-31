@@ -11,14 +11,14 @@ const config = {
    preprocess: vitePreprocess({
       style: {
          css: {
-            postcss: join(__dirname, 'postcss.config.js')
+            postcss: join(__dirname, 'postcss.config.cjs')
          }
       }
    }),
    kit: {
       adapter: adapter(),
       alias: {
-			'$src/*': '/src/*'
+			'$src/*': 'src/*'
 		},
       // csp: {
 		// 	directives: {
